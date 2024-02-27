@@ -1,48 +1,31 @@
----
 pipeline:
-  orgIdentifier: "default"
-  projectIdentifier: "HireBurch"
+  orgIdentifier: default
+  projectIdentifier: HireBurch
   properties:
     ci:
       codebase:
-        build: "<+input>"
-        connectorRef: "account.Github_OAuth_1709002995006"
-        repoName: "SloshBurch/jhttp"
+        build: <+input>
+        connectorRef: account.Github_OAuth_1709002995006
+        repoName: SloshBurch/jhttp
   stages:
-  - stage:
-      identifier: "build"
-      name: "build"
-      spec:
-        cloneCodebase: true
-        execution:
-          steps:
-          - step:
-              type: "Run"
-              identifier: "build_java_app"
-              name: "Build Java App"
-              spec:
-                shell: "Sh"
-                command: "echo hello world\nmvn -B package --file pom.xml"
-          - step:
-              identifier: "dockerbuild"
-              name: "docker_build"
-              spec:
-                image: "plugins/docker"
-                settings:
-                  dry_run: "true"
-                  password: "<+input>"
-                  repo: "hello/world"
-                  tags: "latest"
-                  username: "<+input>"
-              timeout: ""
-              type: "Plugin"
-        platform:
-          arch: "Amd64"
-          os: "Linux"
-        runtime:
-          spec: {}
-          type: "Cloud"
-      type: "CI"
-  identifier: "Build_jhttp_Template_Usage"
+    - stage:
+        name: build
+        identifier: build
+        template:
+          templateRef: Build_Template
+          versionLabel: "1.0"
+          templateInputs:
+            type: CI
+            spec:
+              execution:
+                steps:
+                  - step:
+                      identifier: dockerbuild
+                      type: Plugin
+                      spec:
+                        settings:
+                          password: <+input>
+                          username: <+input>
+  identifier: Build_jhttp_Template_Usage
   tags: {}
-  name: "Build jhttp - Template Usage"
+  name: Build jhttp - Template Usage
