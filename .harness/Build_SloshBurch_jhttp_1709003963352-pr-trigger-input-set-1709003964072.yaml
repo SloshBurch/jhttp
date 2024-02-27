@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_SloshBurch_jhttp_1709003963352-pr-trigger-input-set
+  identifier: Build_SloshBurch_jhttp_1709003963352prtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: HireBurch
+  pipeline:
+    identifier: Build_SloshBurch_jhttp_1709003963352
+    properties:
+      ci:
+        codebase:
+          build:
+            type: PR
+            spec:
+              number: <+trigger.prNumber>
