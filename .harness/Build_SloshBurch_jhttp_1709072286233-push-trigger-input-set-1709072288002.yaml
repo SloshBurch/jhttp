@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_SloshBurch_jhttp_1709072286233-push-trigger-input-set
+  identifier: Build_SloshBurch_jhttp_1709072286233pushtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: HireBurch
+  pipeline:
+    identifier: Build_SloshBurch_jhttp_1709072286233
+    properties:
+      ci:
+        codebase:
+          build:
+            type: branch
+            spec:
+              branch: <+trigger.branch>
