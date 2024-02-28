@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_SloshBurch_jhttp_1709085418294-pr-trigger-input-set
+  identifier: Build_SloshBurch_jhttp_1709085418294prtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: Cloud
+  pipeline:
+    identifier: Build_SloshBurch_jhttp_1709085418294
+    properties:
+      ci:
+        codebase:
+          build:
+            type: PR
+            spec:
+              number: <+trigger.prNumber>
